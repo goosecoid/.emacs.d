@@ -67,3 +67,20 @@
 #+begin_src emacs-lisp
 (setq inhibit-startup-message t)
 #+end_src
+* Misc packages
+** Beacon
+Highlights where your cursor is
+#+begin_src emacs-lisp
+(use-package beacon
+  :ensure t
+  :config
+    (beacon-mode 1))
+#+end_src
+** Which-key
+Displays all possible keybindings while typing
+#+begin_src emacs-lisp
+(use-package which-key
+  :ensure t
+  :init
+  (which-key-mode))
+#+end_src
