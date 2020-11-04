@@ -3,3 +3,4 @@ config.el
 elpa
 init.el~
 auto-save-list
+smex-items
