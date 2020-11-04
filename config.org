@@ -1,0 +1,69 @@
+* Terminal
+** Setting default shell to zsh
+#+begin_src emacs-lisp
+(defvar my-term-shell "/bin/zsh")
+(defadvice ansi-term (before force-zsh)
+  (interactive (list my-term-shell)))
+(ad-activate 'ansi-term)
+#+end_src
+
+* Org
+** Org Bullets
+#+begin_src emacs-lisp
+  (use-package org-bullets
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
+#+end_src
+
+* Saves
+** Disable backups and auto save
+#+begin_src emacs-lisp
+  (setq save-backup-file nil)
+  (setq auto-save-default nil)
+#+end_src
+
+* Aliases
+** yes/no -> y/n
+#+begin_src emacs-lisp
+(defalias 'yes-or-no-p 'y-or-n-p)
+#+end_src
+
+* KB Shortcuts
+** ansi-term
+#+begin_src emacs-lisp
+(global-set-key (kbd "<s-return>") 'ansi-term)
+#+end_src
+
+* Emacs global settings
+** scroll conservatively
+#+begin_src emacs-lisp
+(setq scroll-conservatively 100)
+#+end_src
+** remove system beep
+#+begin_src emacs-lisp
+(setq ring-bell-function 'ignore)
+#+end_src
+** highlight current line globally
+#+begin_src emacs-lisp
+;; Only enable in gui mode
+(when window-system (global-hl-line-mode 1))
+#+end_src
+
+* Emacs GUI settings
+** remove toolbar
+#+begin_src emacs-lisp
+(tool-bar-mode -1)
+#+end_src
+** remove menu bar
+#+begin_src emacs-lisp
+(menu-bar-mode -1)
+#+end_src
+** remove scroll bar
+#+begin_src emacs-lisp
+(scroll-bar-mode -1)
+#+end_src
+** remove startup dialog
+#+begin_src emacs-lisp
+(setq inhibit-startup-message t)
+#+end_src
