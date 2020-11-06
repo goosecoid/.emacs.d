@@ -69,6 +69,11 @@
 	  ))
   (electric-pair-mode t)
 #+end_src
+** Show columns and lines
+#+begin_src emacs-lisp
+  (line-number-mode 1)
+  (column-number-mode 1)
+#+end_src
 * Emacs GUI settings
 ** Remove toolbar
 #+begin_src emacs-lisp
@@ -144,6 +149,13 @@ Displays all possible keybindings while typing
   (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 #+end_src
 * Buffers
+** Kill all buffers
+#+begin_src emacs-lisp
+  (defun kill-all-buffers ()
+    (interactive)
+    (mapc 'kill-buffer (buffer-list)))
+  (global-set-key (kbd "C-M-k") 'kill-all-buffers)
+#+end_src
 ** Enable Ibuffer
 #+begin_src emacs-lisp
   (global-set-key (kbd "C-x b") 'ibuffer) 
@@ -151,6 +163,13 @@ Displays all possible keybindings while typing
 *** Enable expert mode
 #+begin_src emacs-lisp
 (setq ibuffer-expert t)
+#+end_src
+** Kill current buffer immediately
+#+begin_src emacs-lisp
+  (defun kill-curr-buffer ()
+    (interactive)
+    (kill-buffer (current-buffer)))
+  (global-set-key (kbd "C-x k") 'kill-curr-buffer)
 #+end_src
 * Avy
 #+begin_src emacs-lisp
@@ -224,3 +243,14 @@ Displays all possible keybindings while typing
 
 
 
+** Copy line
+#+begin_src emacs-lisp
+  (defun copy-whole-line ()
+    (interactive)
+    (save-excursion
+      (kill-new
+       (buffer-substring
+	(point-at-bol)
+	(point-at-eol)))))
+  (global-set-key (kbd "C-c w l") 'copy-whole-line)
+#+end_src
