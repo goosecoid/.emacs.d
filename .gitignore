@@ -4,3 +4,7 @@ elpa
 init.el~
 auto-save-list
 smex-items
+.#config.org
+recentf
+recentf~
+tramp

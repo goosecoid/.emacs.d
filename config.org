@@ -74,6 +74,11 @@
   (line-number-mode 1)
   (column-number-mode 1)
 #+end_src
+** Clock
+#+begin_src emacs-lisp
+  (setq display-time-24hr-format t)
+  (display-time-mode 1)
+#+end_src
 * Emacs GUI settings
 ** Remove toolbar
 #+begin_src emacs-lisp
@@ -199,6 +204,13 @@ Displays all possible keybindings while typing
     :ensure t
     :init (rainbow-mode 1))
 #+end_src
+** Set delimiters
+#+begin_src emacs-lisp
+  (use-package rainbow-delimiters
+    :ensure t
+    :init
+    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+#+end_src
 * Switch windows
 #+begin_src emacs-lisp
   (use-package switch-window
@@ -253,4 +265,20 @@ Displays all possible keybindings while typing
 	(point-at-bol)
 	(point-at-eol)))))
   (global-set-key (kbd "C-c w l") 'copy-whole-line)
+#+end_src
+* Dashboard
+#+begin_src emacs-lisp
+  (use-package dashboard
+    :ensure t
+    :config
+    (dashboard-setup-startup-hook)
+    (setq dashboard-items '((recents . 10)))
+    (setq dashboard-banner-logo-title "Welcome back! "))
+#+end_src
+* Auto completion
+#+begin_src emacs-lisp
+  (use-package company
+    :ensure t
+    :init
+    (add-hook 'after-init-hook 'global-company-mode))
 #+end_src
