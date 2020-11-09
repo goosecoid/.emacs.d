@@ -308,22 +308,3 @@ Displays all possible keybindings while typing
     :bind
     ("C-c y" . symon-mode))
 #+end_src
-* EXWM
- #+begin_src emacs-lisp
-   (use-package exwm
-     :ensure t
-     :config
-     (require 'exwm-config)
-     (exwm-config-default))
- #+end_src
-** System tray
-#+begin_src emacs-lisp
-  (require 'exwm-systemtray)
-  (exwm-systemtray-enable)
-#+end_src
-** Workspaces
-#+begin_src emacs-lisp
-  (global-set-key (kbd "C-c k") 'exwm-workspace-delete)
-  (global-set-key (kbd "C-c j") 'exwm-workspace-swap)
-  (global-set-key (kbd "C-c l") 'exwm-workspace-switch)
-#+end_src
