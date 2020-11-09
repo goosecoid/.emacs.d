@@ -47,7 +47,7 @@
      ("\\?\\?\\?+" . "#dc752f"))))
  '(package-selected-packages
    (quote
-    (treemacs-persp treemacs-magit treemacs-icons-dired treemacs-projectile treemacs-evil treemacs projectile haskell-mode exwm symon dmenu diminish spaceline company dashboard rainbow-delimiters sudo-edit hungry-delete switch-window rainbow-mode avy org-bullets beacon spacemacs-theme which-key use-package)))
+    (ripgrep rg exec-path-from-shell treemacs-persp treemacs-magit treemacs-icons-dired treemacs-projectile treemacs-evil treemacs projectile haskell-mode exwm symon dmenu diminish spaceline company dashboard rainbow-delimiters sudo-edit hungry-delete switch-window rainbow-mode avy org-bullets beacon spacemacs-theme which-key use-package)))
  '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
