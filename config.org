@@ -308,75 +308,49 @@ Displays all possible keybindings while typing
     :bind
     ("C-c y" . symon-mode))
 #+end_src
-* Syntax Highlighting
-** Flycheck
+* LSP mode
 #+BEGIN_SRC emacs-lisp
-  (use-package flycheck
-    :ensure t
-    :config
-    (add-hook 'typescript-mode-hook 'flycheck-mode))
-#+END_SRC
-** Tide
-#+BEGIN_SRC emacs-lisp
-  (use-package tide
+  (setq lsp-keymap-prefix "C-l")
+
+  (use-package lsp-mode
+    :hook (
+	     ;; bind lsp to the development modes I'm interested in.
+	     (web-mode . lsp-deferred)
+	     (lsp-mode . lsp-enable-which-key-integration))
     :init
-    :ensure t
-    :after (typescript-mode company flycheck)
-    :hook ((typescript-mode . tide-setup)
-	   (typescript-mode . tide-hl-identifier-mode)))
+    (setq lsp-enable-completion-at-point t)
+    (setq lsp-enable-indentation t)
+    (setq lsp-enable-on-type-formatting t)
+    :commands lsp lsp-deferred)
 
-  (defun setup-tide-mode ()
-    (interactive)
-    (tide-setup)
-    (flycheck-mode +1)
-    (setq flycheck-check-syntax-automatically '(save mode-enabled))
-    (tide-hl-identifier-mode +1)
-    (company-mode +1))
+  (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+  (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
-  ;; aligns annotation to the right hand side
-  (setq company-tooltip-align-annotations t)
-
-  ;; format buffer before saving
-  (add-hook 'before-save-hook 'tide-format-before-save)
-  (add-hook 'typescript-mode-hook #'setup-tide-mode)
+  (use-package which-key
+    :config
+    (which-key-mode))
 #+END_SRC
-** Web mode
+* Web mode
 #+BEGIN_SRC emacs-lisp
   (use-package web-mode
     :ensure t
-    :mode (("\\.html?\\'" . web-mode)
-	   ("\\.tsx\\'" . web-mode)
-	   ("\\.jsx\\'" . web-mode))
+    :mode (("\\.js\\'" . web-mode)
+	     ("\\.jsx\\'" . web-mode)
+	     ("\\.ts\\'" . web-mode)
+	     ("\\.tsx\\'" . web-mode)
+	     ("\\.html\\'" . web-mode)
+	     ("\\.vue\\'" . web-mode)
+	     ("\\.json\\'" . web-mode))
+    :commands web-mode
     :config
-    (setq web-mode-markup-indent-offset 2
-	  web-mode-css-indent-offset 2
-	  web-mode-code-indent-offset 2
-	  web-mode-block-padding 2
-	  web-mode-comment-style 2
-	  web-mode-enable-css-colorization t
-	  web-mode-enable-auto-pairing t
-	  web-mode-enable-comment-keywords t
-	  web-mode-enable-current-element-highlight t)
-    (add-hook 'web-mode-hook
-	      (lambda ()
-		(when (string-equal "tsx" (file-name-extension buffer-file-name))
-		  (setup-tide-mode))))
-    ;; enable typescript-tslint check
-    (flycheck-add-mode 'typescript-tslint 'web-mode))
-#+END_SRC
-** Typescript mode
-#+BEGIN_SRC emacs-lisp
-  (use-package typescript-mode
-    :ensure t
-    :config
-    (setq typescript-indent-level 2)
-    (add-hook 'typescript-mode #'subword-mode))
-#+END_SRC
-** Css mode
-#+BEGIN_SRC emacs-lisp
-  (use-package css-mode
-    :config
-  (setq css-indent-offset 2))
+    (setq company-tooltip-align-annotations t)
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    (setq web-mode-code-indent-offset 2)
+    (setq web-mode-enable-part-face t)
+    (setq web-mode-content-types-alist
+	    '(("jsx" . "\\.js[x]?\\'")))
+    )
 #+END_SRC
 * Projectile
 #+BEGIN_SRC emacs-lisp
