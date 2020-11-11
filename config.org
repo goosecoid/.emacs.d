@@ -308,35 +308,42 @@ Displays all possible keybindings while typing
     :bind
     ("C-c y" . symon-mode))
 #+end_src
-* LSP mode
+* Eldoc
 #+BEGIN_SRC emacs-lisp
-  (setq lsp-keymap-prefix "C-l")
-
-  (use-package lsp-mode
-    :hook (
-	     ;; bind lsp to the development modes I'm interested in.
-	     (web-mode . lsp-deferred)
-	     (lsp-mode . lsp-enable-which-key-integration))
+  (use-package eldoc
+    :diminish eldoc-mode)
+#+END_SRC
+* Flycheck
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :init (global-flycheck-mode))
+#+END_SRC
+* Tide + ts-mode
+#+BEGIN_SRC emacs-lisp
+  (use-package tide
+    :ensure t
     :init
-    (setq lsp-enable-completion-at-point t)
-    (setq lsp-enable-indentation t)
-    (setq lsp-enable-on-type-formatting t)
-    :commands lsp lsp-deferred)
+    (setq tide-tsserver-executable "/Users/adrienblavier/.nvm/versions/node/v12.16.1/bin/tsserver")
+    :after (typescript-mode company flycheck)
+    :hook ((typescript-mode . tide-setup)
+	   (typescript-mode . tide-hl-identifier-mode)
+	   (before-save . tide-format-before-save)))
 
-  (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-  (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-
-  (use-package which-key
-    :config
-    (which-key-mode))
+  (require 'web-mode)
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+  (add-hook 'web-mode-hook
+	    (lambda ()
+	      (when (string-equal "tsx" (file-name-extension buffer-file-name))
+		(setup-tide-mode))))
+  ;; enable typescript-tslint checker
+  (flycheck-add-mode 'typescript-tslint 'web-mode)
 #+END_SRC
 * Web mode
 #+BEGIN_SRC emacs-lisp
   (use-package web-mode
     :ensure t
-    :mode (("\\.js\\'" . web-mode)
-	     ("\\.jsx\\'" . web-mode)
-	     ("\\.ts\\'" . web-mode)
+    :mode (("\\.jsx\\'" . web-mode)
 	     ("\\.tsx\\'" . web-mode)
 	     ("\\.html\\'" . web-mode)
 	     ("\\.vue\\'" . web-mode)
@@ -367,7 +374,7 @@ Displays all possible keybindings while typing
 #+END_SRC
 * Node js path
 #+BEGIN_SRC emacs-lisp
-  (setq exec-path (append exec-path '("~/.nvm/versions/node/v14.15.0/bin")))
+  ;;(setq exec-path (append exec-path '("~/.nvm/versions/node/v14.15.0/bin")))
 #+END_SRC
 * Treemacs
 #+BEGIN_SRC emacs-lisp
