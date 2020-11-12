@@ -333,10 +333,11 @@ Displays all possible keybindings while typing
 
   (use-package lsp-mode
     :ensure t
+    :commands (lsp lsp-deferred)
     :hook (
-	    (typescript-mode . lsp)
-	    (lsp-mode . lsp-enable-which-key-integration))
-    :commands lsp)
+	    (typescript-mode . lsp-deferred)
+	    (go-mode . lsp-deferred)
+	    (lsp-mode . lsp-enable-which-key-integration)))
 
   ;; Optional lsp deps
   (use-package lsp-ui :ensure t :commands lsp-ui-mode)
