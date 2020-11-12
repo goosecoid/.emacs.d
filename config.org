@@ -343,6 +343,11 @@ Displays all possible keybindings while typing
   (use-package lsp-ui :ensure t :commands lsp-ui-mode)
   (use-package lsp-ivy :ensure t :commands lsp-ivy-workspace-symbol)
   (use-package lsp-treemacs :ensure t :commands lsp-treemacs-errors-list)
+  
+  (use-package go-mode
+    :ensure t)
+  
+  (add-hook 'go-mode-hook 'lsp-deferred)
 
   (use-package typescript-mode
     :ensure t
