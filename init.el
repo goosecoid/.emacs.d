@@ -44,8 +44,11 @@
      ("XXX+" . "#dc752f")
      ("\\?\\?\\?+" . "#dc752f")))
  '(package-selected-packages
-   '(ripgrep rg exec-path-from-shell treemacs-persp treemacs-magit treemacs-icons-dired treemacs-projectile treemacs-evil treemacs projectile haskell-mode exwm symon dmenu diminish spaceline company dashboard rainbow-delimiters sudo-edit hungry-delete switch-window rainbow-mode avy org-bullets beacon spacemacs-theme which-key use-package))
- '(pdf-view-midnight-colors '("#b2b2b2" . "#292b2e")))
+   (quote
+    (add-node-modules-path ripgrep rg exec-path-from-shell treemacs-persp treemacs-magit treemacs-icons-dired treemacs-projectile treemacs-evil treemacs projectile haskell-mode exwm symon dmenu diminish spaceline company dashboard rainbow-delimiters sudo-edit hungry-delete switch-window rainbow-mode avy org-bullets beacon spacemacs-theme which-key use-package)))
+ '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e")))
+ '(split-height-threshold 0)
+ '(split-width-threshold 0))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
