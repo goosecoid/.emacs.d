@@ -337,24 +337,46 @@ Displays all possible keybindings while typing
     :hook (
 	    (typescript-mode . lsp-deferred)
 	    (go-mode . lsp-deferred)
+	    (haskell-mode .lsp-deferred)
 	    (lsp-mode . lsp-enable-which-key-integration)))
 
   ;; Optional lsp deps
   (use-package lsp-ui :ensure t :commands lsp-ui-mode)
   (use-package lsp-ivy :ensure t :commands lsp-ivy-workspace-symbol)
   (use-package lsp-treemacs :ensure t :commands lsp-treemacs-errors-list)
-  
+
+  ;; Golang
   (use-package go-mode
     :ensure t)
-  
+
   (add-hook 'go-mode-hook 'lsp-deferred)
 
+  ;; Typescript
   (use-package typescript-mode
     :ensure t
     :hook
-    (typescript-mode . lsp)
+    (typescript-mode . lsp-deferred)
     :mode (("\\.ts\\'" . typescript-mode)
 	   ("\\.tsx\\'" . typescript-mode)))
+
+  ;; Haskell
+  (use-package lsp-haskell
+    :ensure t)
+
+  (use-package haskell-mode
+    :ensure t
+    :hook
+    (haskell-mode . lsp-deferred))
+
+  ;; Hooks so haskell and literate haskell major modes trigger LSP setup
+  (add-hook 'haskell-mode-hook #'lsp)
+  (add-hook 'haskell-literate-mode-hook #'lsp)
+
+  ;; use flycheck over flymake for haskell
+  (use-package flycheck-haskell
+    :ensure t)
+
+  (add-hook 'haskell-mode-hook #'flycheck-haskell-setup)
 #+END_SRC
 * Treemacs
 #+BEGIN_SRC emacs-lisp
@@ -482,3 +504,8 @@ Displays all possible keybindings while typing
        "SSH_AGENT_PID" "SSH_AUTH_SOCK" "SHELL"
        "JAVA_HOME")))
 #+END_SRC
+* SLY
+#+begin_src emacs-lisp
+  (use-package sly
+    :ensure t)
+#+end_src

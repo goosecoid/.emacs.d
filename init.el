@@ -44,7 +44,7 @@
      ("XXX+" . "#dc752f")
      ("\\?\\?\\?+" . "#dc752f")))
  '(package-selected-packages
-   '(add-node-modules-path ripgrep rg exec-path-from-shell treemacs-persp treemacs-magit treemacs-icons-dired treemacs-projectile treemacs-evil treemacs projectile haskell-mode exwm symon dmenu diminish spaceline company dashboard rainbow-delimiters sudo-edit hungry-delete switch-window rainbow-mode avy org-bullets beacon spacemacs-theme which-key use-package))
+   '(flycheck-haskell company-ghc sly lsp lsp-haskell add-node-modules-path ripgrep rg exec-path-from-shell treemacs-persp treemacs-magit treemacs-icons-dired treemacs-projectile treemacs-evil treemacs projectile haskell-mode exwm symon dmenu diminish spaceline company dashboard rainbow-delimiters sudo-edit hungry-delete switch-window rainbow-mode avy org-bullets beacon spacemacs-theme which-key use-package))
  '(pdf-view-midnight-colors '("#b2b2b2" . "#292b2e"))
  '(split-height-threshold 0)
  '(split-width-threshold 0))
