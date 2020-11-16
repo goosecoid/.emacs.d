@@ -24,11 +24,13 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
- '(custom-enabled-themes '(spacemacs-dark))
+ '(custom-enabled-themes (quote (spacemacs-dark)))
  '(custom-safe-themes
-   '("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))
+   (quote
+    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(hl-todo-keyword-faces
-   '(("TODO" . "#dc752f")
+   (quote
+    (("TODO" . "#dc752f")
      ("NEXT" . "#dc752f")
      ("THEM" . "#2d9574")
      ("PROG" . "#4f97d7")
@@ -42,10 +44,11 @@
      ("TEMP" . "#b1951d")
      ("FIXME" . "#dc752f")
      ("XXX+" . "#dc752f")
-     ("\\?\\?\\?+" . "#dc752f")))
+     ("\\?\\?\\?+" . "#dc752f"))))
  '(package-selected-packages
-   '(flycheck-haskell company-ghc sly lsp lsp-haskell add-node-modules-path ripgrep rg exec-path-from-shell treemacs-persp treemacs-magit treemacs-icons-dired treemacs-projectile treemacs-evil treemacs projectile haskell-mode exwm symon dmenu diminish spaceline company dashboard rainbow-delimiters sudo-edit hungry-delete switch-window rainbow-mode avy org-bullets beacon spacemacs-theme which-key use-package))
- '(pdf-view-midnight-colors '("#b2b2b2" . "#292b2e"))
+   (quote
+    (flycheck-haskell company-ghc sly lsp lsp-haskell add-node-modules-path ripgrep rg exec-path-from-shell treemacs-persp treemacs-magit treemacs-icons-dired treemacs-projectile treemacs-evil treemacs projectile haskell-mode exwm symon dmenu diminish spaceline company dashboard rainbow-delimiters sudo-edit hungry-delete switch-window rainbow-mode avy org-bullets beacon spacemacs-theme which-key use-package)))
+ '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e")))
  '(split-height-threshold 0)
  '(split-width-threshold 0))
 (custom-set-faces
