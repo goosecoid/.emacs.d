@@ -359,6 +359,21 @@ Displays all possible keybindings while typing
     :mode (("\\.ts\\'" . typescript-mode)
 	   ("\\.tsx\\'" . typescript-mode)))
 
+  (setq typescript-indent-level 2)
+
+  (use-package web-mode
+    :ensure t
+    :mode (("\\.html\\'" . web-mode)
+	     ("\\.vue\\'" . web-mode)
+	     ("\\.json\\'" . web-mode))
+    :commands web-mode
+    :config
+    (setq company-tooltip-align-annotations t)
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    (setq web-mode-code-indent-offset 2)
+    (setq web-mode-enable-part-face t))
+
   ;; Haskell
   (use-package lsp-haskell
     :ensure t)
@@ -503,3 +518,8 @@ Displays all possible keybindings while typing
   (use-package sly
     :ensure t)
 #+end_src
+* YAML
+#+BEGIN_SRC emacs-lisp
+  (use-package yaml-mode
+    :ensure t)
+#+END_SRC

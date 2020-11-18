@@ -47,7 +47,7 @@
      ("\\?\\?\\?+" . "#dc752f"))))
  '(package-selected-packages
    (quote
-    (flycheck-haskell company-ghc sly lsp lsp-haskell add-node-modules-path ripgrep rg exec-path-from-shell treemacs-persp treemacs-magit treemacs-icons-dired treemacs-projectile treemacs-evil treemacs projectile haskell-mode exwm symon dmenu diminish spaceline company dashboard rainbow-delimiters sudo-edit hungry-delete switch-window rainbow-mode avy org-bullets beacon spacemacs-theme which-key use-package)))
+    (yaml-mode flycheck-haskell company-ghc sly lsp lsp-haskell add-node-modules-path ripgrep rg exec-path-from-shell treemacs-persp treemacs-magit treemacs-icons-dired treemacs-projectile treemacs-evil treemacs projectile haskell-mode exwm symon dmenu diminish spaceline company dashboard rainbow-delimiters sudo-edit hungry-delete switch-window rainbow-mode avy org-bullets beacon spacemacs-theme which-key use-package)))
  '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e")))
  '(split-height-threshold 0)
  '(split-width-threshold 0))
@@ -57,3 +57,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :extend nil :stipple nil :background "#292b2e" :foreground "#b2b2b2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 143 :width normal :foundry "SRC" :family "Hack")))))
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
